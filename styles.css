@@ -1,0 +1,282 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #000000;
+    scroll-behavior: smooth;
+}
+
+/* Color Palette */
+:root {
+    --dark-blue: #002B5C;
+    --light-blue: #0096D6;
+    --white: #FFFFFF;
+    --gray: #D3D3D3;
+}
+
+header {
+    background: linear-gradient(45deg, var(--dark-blue), var(--light-blue));
+    color: var(--white);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+
+/* Logo Area */
+header .logo {
+    display: inline-block;
+}
+
+header .logo img {
+    height: 40px;
+    border-radius: 20rem; /* Adjust the logo size */
+}
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+nav a {
+    color: var(--white);
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 1.1rem;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: var(--light-blue);
+}
+
+.search-bar {
+    margin-right: 20px;
+}
+
+.search-bar input {
+    padding: 8px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 20px;
+}
+
+.hamburger-menu {
+    display: none;
+    cursor: pointer;
+}
+
+.hamburger-menu div {
+    width: 30px;
+    height: 4px;
+    background-color: var(--white);
+    margin: 6px 0;
+    transition: 0.3s;
+}
+
+.mobile-nav {
+    display: none;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background-color: var(--dark-blue);
+    padding: 10px;
+    z-index: 999;
+}
+
+.mobile-nav a {
+    display: block;
+    color: var(--white);
+    text-decoration: none;
+    padding: 10px;
+    font-size: 1.2rem;
+}
+
+.mobile-nav a:hover {
+    background-color: var(--light-blue);
+}
+
+.hero {
+    text-align: center;
+    padding: 50px 20px;
+    background: url('https://source.unsplash.com/1600x900/?ai,technology') no-repeat center/cover;
+    color: var(--white);
+    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(5px);
+}
+
+.hero h2 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    animation: fadeInDown 2s;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    animation: fadeInUp 2s;
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.post {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    backdrop-filter: blur(5px);
+    border: 1px solid transparent;
+}
+
+.post:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    border-color: var(--dark-blue);
+}
+
+.post img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.post .content {
+    padding: 20px;
+}
+
+.post h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.post p {
+    color: #555;
+}
+
+.post a {
+    display: inline-block;
+    margin-top: 10px;
+    color: var(--light-blue);
+    text-decoration: none;
+    font-weight: bold;
+    border: 2px solid var(--light-blue);
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.post a:hover {
+    background: var(--light-blue);
+    color: var(--white);
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: var(--dark-blue);
+    color: var(--white);
+    margin-top: 20px;
+}
+
+footer p {
+    margin-bottom: 5px;
+}
+
+footer a {
+    color: var(--light-blue);
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+.footer-links {
+    margin: 20px 0;
+}
+
+.footer-links a {
+    margin: 0 10px;
+    color: #aaa;
+}
+
+.footer-links a:hover {
+    color: var(--white);
+}
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    nav a {
+        font-size: 1rem;
+        margin: 0 10px;
+    }
+
+    .hero h2 {
+        font-size: 2.5rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .hamburger-menu {
+        display: block;
+    }
+
+    nav {
+        display: none;
+    }
+
+    .mobile-nav {
+        display: block;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    nav a {
+        font-size: 0.9rem;
+        margin: 0 5px;
+    }
+
+    .hero h2 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 0.9rem;
+    }
+}
