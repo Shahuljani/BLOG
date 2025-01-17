@@ -15,6 +15,7 @@
             font-family: 'Arial', sans-serif;
             line-height: 1.6;
             background-color: #f4f4f9;
+            scroll-behavior: smooth;
         }
 
         header {
@@ -25,6 +26,7 @@
             position: sticky;
             top: 0;
             z-index: 1000;
+            backdrop-filter: blur(5px);
         }
 
         header h1 {
@@ -54,6 +56,7 @@
             background: url('https://source.unsplash.com/1600x900/?nature,blog') no-repeat center/cover;
             color: #fff;
             box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(5px);
         }
 
         .hero h2 {
@@ -87,16 +90,19 @@
         }
 
         .post {
-            background: #fff;
+            background: rgba(255, 255, 255, 0.8);
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             overflow: hidden;
             transition: transform 0.3s, box-shadow 0.3s;
+            backdrop-filter: blur(5px);
+            border: 1px solid transparent;
         }
 
         .post:hover {
             transform: translateY(-10px);
             box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+            border-color: #6a11cb;
         }
 
         .post img {
@@ -124,10 +130,15 @@
             color: #2575fc;
             text-decoration: none;
             font-weight: bold;
+            border: 2px solid #2575fc;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background 0.3s, color 0.3s;
         }
 
         .post a:hover {
-            text-decoration: underline;
+            background: #2575fc;
+            color: #fff;
         }
 
         footer {
