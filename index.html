@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Blog Website</title>
+    <meta name="description" content="Discover amazing stories and insights every day on My Blog. Original content, engaging topics, and more.">
+    <title>Generative AI Blog</title>
     <style>
         * {
             margin: 0;
@@ -14,32 +15,48 @@
         body {
             font-family: 'Arial', sans-serif;
             line-height: 1.6;
-            background-color: #f4f4f9;
+            background-color: #000000;
             scroll-behavior: smooth;
         }
 
+        /* Color Palette */
+        :root {
+            --dark-blue: #002B5C;
+            --light-blue: #0096D6;
+            --white: #FFFFFF;
+            --gray: #D3D3D3;
+        }
+
         header {
-            background: linear-gradient(45deg, #6a11cb, #2575fc);
-            color: #fff;
+            background: linear-gradient(45deg, var(--dark-blue), var(--light-blue));
+            color: var(--white);
             padding: 20px;
-            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             position: sticky;
             top: 0;
             z-index: 1000;
             backdrop-filter: blur(5px);
         }
 
-        header h1 {
-            font-size: 2.5rem;
-            text-transform: uppercase;
+        /* Logo Area */
+        header .logo {
+            display: inline-block;
+        }
+
+        header .logo img {
+            height: 40px;
+            border-radius: 20rem; /* Adjust the logo size */
         }
 
         nav {
-            margin-top: 10px;
+            display: flex;
+            align-items: center;
         }
 
         nav a {
-            color: #fff;
+            color: var(--white);
             text-decoration: none;
             margin: 0 15px;
             font-size: 1.1rem;
@@ -47,14 +64,61 @@
         }
 
         nav a:hover {
-            color: #ffcc00;
+            color: var(--light-blue);
+        }
+
+        .search-bar {
+            margin-right: 20px;
+        }
+
+        .search-bar input {
+            padding: 8px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 20px;
+        }
+
+        .hamburger-menu {
+            display: none;
+            cursor: pointer;
+        }
+
+        .hamburger-menu div {
+            width: 30px;
+            height: 4px;
+            background-color: var(--white);
+            margin: 6px 0;
+            transition: 0.3s;
+        }
+
+        .mobile-nav {
+            display: none;
+            position: absolute;
+            top: 80px;
+            left: 0;
+            width: 100%;
+            background-color: var(--dark-blue);
+            padding: 10px;
+            z-index: 999;
+        }
+
+        .mobile-nav a {
+            display: block;
+            color: var(--white);
+            text-decoration: none;
+            padding: 10px;
+            font-size: 1.2rem;
+        }
+
+        .mobile-nav a:hover {
+            background-color: var(--light-blue);
         }
 
         .hero {
             text-align: center;
             padding: 50px 20px;
-            background: url('https://source.unsplash.com/1600x900/?nature,blog') no-repeat center/cover;
-            color: #fff;
+            background: url('https://source.unsplash.com/1600x900/?ai,technology') no-repeat center/cover;
+            color: var(--white);
             box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.4);
             backdrop-filter: blur(5px);
         }
@@ -102,7 +166,7 @@
         .post:hover {
             transform: translateY(-10px);
             box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
-            border-color: #6a11cb;
+            border-color: var(--dark-blue);
         }
 
         .post img {
@@ -127,25 +191,25 @@
         .post a {
             display: inline-block;
             margin-top: 10px;
-            color: #2575fc;
+            color: var(--light-blue);
             text-decoration: none;
             font-weight: bold;
-            border: 2px solid #2575fc;
+            border: 2px solid var(--light-blue);
             padding: 5px 10px;
             border-radius: 5px;
             transition: background 0.3s, color 0.3s;
         }
 
         .post a:hover {
-            background: #2575fc;
-            color: #fff;
+            background: var(--light-blue);
+            color: var(--white);
         }
 
         footer {
             text-align: center;
             padding: 20px;
-            background: #222;
-            color: #fff;
+            background: var(--dark-blue);
+            color: var(--white);
             margin-top: 20px;
         }
 
@@ -154,12 +218,25 @@
         }
 
         footer a {
-            color: #2575fc;
+            color: var(--light-blue);
             text-decoration: none;
         }
 
         footer a:hover {
             text-decoration: underline;
+        }
+
+        .footer-links {
+            margin: 20px 0;
+        }
+
+        .footer-links a {
+            margin: 0 10px;
+            color: #aaa;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
         }
 
         @media (max-width: 768px) {
@@ -178,6 +255,18 @@
 
             .hero p {
                 font-size: 1rem;
+            }
+
+            .hamburger-menu {
+                display: block;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .mobile-nav {
+                display: block;
             }
         }
 
@@ -203,51 +292,102 @@
 </head>
 <body>
     <header>
-        <h1>My Blog</h1>
+        <!-- Logo Area -->
+        <div class="logo">
+            <img src="prsblogs-logo.gif" alt="Blog Logo"> <!-- Replace 'logo.png' with your logo file -->
+        </div>
+
         <nav>
             <a href="#">Home</a>
             <a href="#">About</a>
             <a href="#">Contact</a>
+
+            <div class="search-bar">
+                <input type="text" placeholder="Search...">
+            </div>
         </nav>
+
+        <!-- Hamburger Menu -->
+        <div class="hamburger-menu" onclick="toggleMobileNav()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
     </header>
 
+    <div class="mobile-nav" id="mobile-nav">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+    </div>
+
     <div class="hero">
-        <h2>Welcome to My Blog</h2>
-        <p>Discover amazing stories and insights every day</p>
+        <h2>Welcome to the Generative AI Blog</h2>
+        <p>Explore the latest trends, tutorials, and insights on AI and technology</p>
     </div>
 
     <div class="container">
         <div class="post">
-            <img src="https://source.unsplash.com/400x300/?technology" alt="Blog Post">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9MUYV3UHb8KxY9KtfHotCLRLT3vMvoCVnE_TFdmj8rPH54g3xms9Y1xw&s" alt="Blog Post">
             <div class="content">
-                <h3>Post Title One</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum.</p>
+                <h3>Generative AI: Transforming Creative Industries</h3>
+                <p>Discover how generative AI is revolutionizing art, music, and content creation with cutting-edge tools.</p>
                 <a href="#">Read More</a>
             </div>
         </div>
 
         <div class="post">
-            <img src="https://source.unsplash.com/400x300/?coding" alt="Blog Post">
+            <img src="data:image/jpeg;base64,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" alt="Blog Post">
             <div class="content">
-                <h3>Post Title Two</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum.</p>
+                <h3>Top Machine Learning Algorithms Explained</h3>
+                <p>A beginner's guide to understanding key machine learning algorithms like decision trees, SVMs, and more.</p>
                 <a href="#">Read More</a>
             </div>
         </div>
 
         <div class="post">
-            <img src="https://source.unsplash.com/400x300/?nature" alt="Blog Post">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSd1VzpWPDN6YE5NS4BXTn0eyVbo0nB4QZPkX1h-pYgxfKAZSVq7xNObGQ&s" alt="Blog Post">
             <div class="content">
-                <h3>Post Title Three</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum.</p>
+                <h3>The Future of AI in Healthcare</h3>
+                <p>Explore how artificial intelligence is driving innovation in diagnosis, treatment, and patient care.</p>
+                <a href="#">Read More</a>
+            </div>
+        </div>
+
+        <div class="post">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRouU7gBHCgQ15oXOyurj2TwhRUyp_fMSXJjq6xz5VTN0dysV6Ft-OJ_8Q&s" alt="Blog Post">
+            <div class="content">
+                <h3>Python for Data Science: A Quick Start Guide</h3>
+                <p>Learn the basics of using Python for data analysis, visualization, and machine learning projects.</p>
+                <a href="#">Read More</a>
+            </div>
+        </div>
+
+        <div class="post">
+            <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAJQBDQMBIgACEQEDEQH/xAAcAAABBQEBAQAAAAAAAAAAAAABAAIDBAUGBwj/xABGEAABAwIDBQUECAIJAgcAAAABAAIDBBEFEiEGMUFRYRMicYGRFDKh0QcjQmKSscHwUnIVJENElLLS4fFUZBczNFNzk6P/xAAZAQEBAQEBAQAAAAAAAAAAAAABAAIDBAX/xAAjEQEBAQEAAgIBBAMAAAAAAAAAARECAxIhMQQTFCJBBVFh/9oADAMBAAIRAxEAPwDlnFRk3TnFMeACRv14L1OZjlGbgZgbeeqebZTcnNwA3KN29CMJOUtsLH1CjN/tAhSEDiE1wvwHkLKZtQEJjm90m40Nrcf3orIjJCt0OB4niTM9Bh9TUR/xsj7p8zofVWMe7GcFGQtXE8JrsNJ9upJaf/5LfGxNlmvbZVhnSApjlM4KIhDUqMppTymFDRpTU4ppWUaUCihvNlI1C6fcck02QjSgnJKJhQT0tFAyyCekhIygpCAhYJOoyELKSyVlLUSClsmkWQdRlJSWTSNVF6A4pnjqiSgMuuYkEDQgXBXdgxxG8oEJ7XvjOaMkOsd3omuAD+48PbwcARcc9df3w3IwG2UjGNIIN82lrDTqlGLvF25hxHNTRgE6DTfu3Lcjz+XrI6LYXZcbQYqG1DP6nT9+Ykb+TfPXyXsktBTUFO6SBjgAAHAyOIta26/DluWD9GpihwSGCzQ58fbNPF9ySfQmy6LEpQIXj7p0XO7e8XHU48XvXH4pI2Rjw4NI4gi915ZtRgraOR1TRsIp3Hvs4MJ3W6L0qvid2DnXWEaM11JVscbDsn7/AA0Xqvis+Hz+f8l4u+b1P6eWvYRwUDgtatg7MkHeFmyBceuce7xeX2mqxCY4KVyiK5vTKYU0p5TCstAkwAk300SKFu8OqEagihpwUiUogJgdLnZZrg3LfU3vu9FEEfs2CDLDTv0QT0rKZtMSsp4WxZvrQ8jiGEA/EK6YsKYWiQYiCd4+r+CRrKsllViYQ5r0/aZbC+ci9+O7gnUtK6pqGxMcNb62J4X4eisGqtkbaaA+imMY8PEqTtAGZBmB559PyVi1TITSFORpqB5JhAQZUNkLKUgdUMh4Ka12p10SeS9znWaOPd4fJMzIBxAIBIB36rsDrpHu/wC4smXRLi7eSfEpZqWN+UEgkO3XBt+/VSxvy6MLgCLHvXuqoOqcHWWo4dzXpGxGMOZRQxWBkppiInW9wEZi0nk6zvAt6ruq6YSRZ2ElrhceBXjWyM8jcZYGyOazs3vkAF7hrS7d5Beqy1EeVs0DmvppGtLgN8LnbiR/CSQOhsd1yD4nWxx8fjt5s6+nM4pWPaHRjdyVGerFDgWIVG49m2Np+882U2Ojs6h1ua5razFPZ6WlomRxSF5M0gkZmAO5o+BXW+SuH7HxyXmT4cxVz9o5UJN6uPxEn+50H+G/3UL6+/8AcsP86cfNcurr2ePxzmZFF/moir80Mc0TqilblyC88I/s/vN+7/lPSyoO0t4Lm9ENKYU87k0jfZDQG2S/G/NAcPNG2lkmjvDxKzhR3TxI8CwOiJfmbbs2DqBqmWVjOi57nCxKASRHgrFabZKycPBFQ02yndPI6PI55LbWsVHlJ4D8QRyHmz8bfmlJmUkj4u1aw5DfvEixI325qOMmOXMzM0gWvdSieZsTYmzuDG3ytEoAF/NRZCTq5mu852/NSomzy508lnHpe6hO/VSGO25zPxt+ajLCOLPxt+aka6yYbJ5b1b5Ob80wt6j1HzQcNKV0cvUfiHzSydR+IfNBdaDrre3RF7sz3O3ZiTbzUV06xBs4EHiCF2FpydZBoVmmpZqqeOClifNNJoyONt3O8EuXXcVwEnWAFzbWwPVdZNsDj9NRmrq2UkEbWhzw+fvRjiSAOHQroNj8Z2WwyeOkpMNmqJni7cQqYwO2dfc2+7puuj2/0xm3L8ItnMBbg+COr62OOOsmAzuqfdghNs2h42Hjr6cjtdUytfRV9G2opZHNe0ESfYv43tu0Oi9xnmwvHcJErWQ1VNNdrg5vEaEHiCDwXnW0X0fQ1ZccGeY37/Z5Tdp8DvHDmni611z6z4cbJtDij6Z8sz3TPblDXPprZtddRoeG4fmsCvrJ62ofPUOJedLEWAHKy06jZrFKOoEcuHOHaZmFzA0geh6dEyDDJWVn9GVFOZIpG3jqBEbxOtp3uWli2610zzrDcdUxy6Wg2SmrHOZNieH0s2awileTI7rl0so8T2NxaiBc1sVUy1wYHkuI/lP6XXN1+nOxSPglZLC7JIzVrh+9ymqIWTwvqKVmVrNZoBvj4Zm/dvb+U71C4abzcGxaQRlPVKGR8MrZYnlr2nQi366FGLUDgL6bk2yvzQRzQuqqZoa1ussA/s/vN+7f0uqZFt+mqDqMhFo7w8SjZPhikmmiiisZZHhkd9xc42H5oWm05gbczRl+nd72WyvYdgtVilLVVVKwNip8rXOebAuO5o62Dj0A6hWdp8FbgeJPp4nySw69nI8C7spLXbuoVz2erwGenjc+endD9e9z2uAkkLW3axu5wAFr8cylLHNz089NJ2dTTywPsHZJoyx1juNjwUtA5kczXyxCWMOGZp4jkt3H6fEMQw2PG62SADRgZGDdxLj3j1Jzm3JpKwImgseeRH6qFKpMZmcYgQzhdQp53lNKlCBS05fBBG+m93qorTooRTQSmRhc9zs7Ae8ADy4fvkoJexDvqQS3m+1/grBpZQCbnTo75KsT1d6qKMkcmphPQKQnq71U0McL23e4g9SpYpEppKvTQxC2U381XyN5H1QdQX11bopovZrfWxvcejrKN7ddDbxKZmI0Q06oFS3JJLjc81XaVZNmyPAADQ4gAXsByFze3jrzXeOHVWKenmlzGGGSQN1cWMLg3xtuXtP0a7OxYPgkeJ1MIFfVxh7i5vejj3tZ001PU24BeM0b3mRsAkkbFO9scjWPLcwLgNbeK+j6qTsqdjNPdG5Z8nzkZ8P3bXI7U1+fCa95kP8A5EgLTu1C8XqMSq6p0Tnva0RNDY2Rd1rbbtOfVehbT1w/o6uY0gkxuA5LzuaF1PTxySBoMoJDt27f+Y9V05kkcvNf5PVPozmfJgmKvcXZHYlmZc84oy78/wA1v1shDdCRzA4rL2TibQ7N0NITaVzTNN/O85reQsPJatQ8P7uVvjZa451z/J/L4/H5l6c7XPtvOqx5XNL/ALK08YOR6wi4uksFrrmxrxfkc+Tn25Zu0uHCuwuSRkbXTQDO027xaNSPTd1XPYFtViGGFrKl76ukvqxzruYOYPzXo+FU4lkAcNNfyXIVmC0NO59Lle58czmMDDl0vZouQd+nDer9K5rP7zid+n9rmKYdh20MTK6lfllcO89jdXdHA8VyU1LRwSuinfWxvbva6Ntx8VuYJNUwyP8AZaC0F7SlpcX3toSXGx8gFqVWGUmPU145QKhgIEjR7v3XA6+XBcrHpltmuNjFDDI2WGqq2uG49mzT46jpxTZhhT5S6H2uNpGrMjbNPIa7vFS1+EV1FUGCWllcfsujYXBw5iyqmiqv+kqf/pd8lixbUc9LlYJoX9pA42zWsWnk4cPy5KTC6czVebO9scDe2kdGbOa1utx15J8ENdA8llJOQ4ZXNdC4tcORFlq4dQxRsdUPZOyJxDHQSMOlwSWkn3hoPG/AqkV6xTmlfPiDKmqndI6EhzI5HFznd4mwOvifFblPiFTjFTVMxitMbXy9vHHIS1rpdG5b27oyu3cTrwVSkeKWomq8jzO8FplczSNx35Qb3IGa1+d+CG0dRTupW1AmPtMgDIoW2PZi4JLvU67y431F7Nc/bbkYuNEsrH07nNJhJa4N1aDyB5AWHkqUZsx/kmnXxRjIyvB5hYdUb7ZtE1OdvSjjfNII4mOe8i4a0XKG4akpZaWWGQskyNcN4zjRNML7b2/iUT88w1yf/kPkob778TdXZJGvZl3HoR81TMZ5t9UaTHGwKmiZIYwWPbu3KIxu5t9VcpIzkPuO8z+hCjFSSOQe85nooXxvDb3FuivzuaBbuDzd/qVU5Ruez1PzRh3/AIp5rJb1O/vfw+X/ACosh/ib6oadE12isBwLyA+zCT3nC3hu4qi1ykDl31w65XWVBhtMAS6Ih4A33Bvb4L6B2ixIHD430bi8zQgte3UZSL3B8CvnQP39V7hQzMGwOzzpDlazCoS7wDB8kX5sPj5yOExntasTUcOVpIHaOfuAN9B10PksjA458YqTQzS5oontkLXC4ia2+Y34C1h1zDkrGDVj60VlXI3KaiqdJE2++MBoB8NCuiwnCqGjw5lZg800kdWM8k8pGd2vukAWAGot4rc6Y78ftW/SVJ7NriQQO6B0G5WpK8Blwubqq6nwykdPWzCONvPeTyA4nouPxbbCuq4nmgYKaPc06OefPcP3qt8+T1+nDz/iceaSduxxWofM4mx0Wc2w3uZc/fC82nrKqZxdUVE0t/fDnu056cwiyASVslO5os3cRfdcW4dUXyWt8fj8+PnOXsmGStjkiOhF+8QQvN8UxN1TWzTxv0fI5zT0JNvgosMnfhlLJViUhz25YGDdm5+W9ZWYgBo3AclfqXMc/wBtz7++fLqtl8Zhjd/R9c4MZI76qW/uuP2SevNdTV7Ox1kNRWPkdTTwAZJYyWue7g11tS3f+hC8pJvcOuQd66PBNsaihjZTV7HVVO0Wa4OtIwdCfe8D6rHtHo9bnw6qopXPYG1r7xSxA5GTl9yb6gnVtrdPBcfLgOKPxY0GHmapuM7Xl5aGtJ0zG9guzYIqvDzXUglmin+sBjjJceAFhxsB5rmtmKr2vbemfX56aMS6QS3Hug5A4biSTfXlv52ymcWfbqMH+iTEJ8r8Vxp0Uf2o6Rpc/wDE7QehV3aHZ7Z/ZcUtLSmt9uqw8iplqS4xMYAXOsdOIGgB1Oq7iLETGxxzanguP22wobRtgeKn2aops4ZK4EtIda7S3loOSPXB1zsxxsVY2nww+0dk1jxmd3jcZraWtpoG9bXHErlcSqIDXVDpsPAcX7mTlo6WGXkr1VBT0Ur+yxFmK1kOrYIWObGwj7Ti7V5HIfkudmlfLI6SVxc5xJc48+KL0z4/F6/awaik/wCgd/iT/pTo5qUh1qIjd/eD/pUbaKUta6SSCBrtW9vIGEjmBvt5Js8LaVseWqpqjtWh59ne49nqe667RYrDrhxnpQ43oSbc6k/JNfXzmPs48kEV7mOFuUHxOpPmSqrjqTzQuhqQb6W09EkEFHF1tXE2jdE6jgfNmBbM4HM0Dfxsb+CrySGQ3LIwfutt+SfIaXISxzyeHeP+lRROa195NW2sVGw0k/wD4/NTMbLk7tM09dR+qiqHRl4Me5R9o4bnFSkSvZL9qmb8fmonNeP7Bo8L/NNMj/4io3PdxcUacFzXf+3ZMJcNDolndzUkUrWg5o2PPNzboaa4KfqACdx3KEFOB6+q6a54maSTp+S9eqc1R9H2B0kUgaJcIgaXgZrd3XS/Sy8+2a2MxjabD6uswpjHR07g3K92UyneWtJ0uBz03Lcnmx+gpqKlpcAxKqpWxfXBlHJ9TIXuLhcN0IuBborYZGdNS+xRRyFjLUzXtEjBYNBHu29PRX/ozxPWrwmd/ckvND0cPfA8rH1WRtDXD2AUnZ1EM8sg7WOeJ0Toxv1DhxI9AVg4fWzYfWQ1dM5okhdcEnQ8wellqj+1jabFJcaxuWzv6vTvLIY+AAvr1JsoaNzDGXOJLW6kW4FamH4dQ4pidXXwzGMRx9saQt1N3AOF+QzXHHXos3OxkkuQnIXct/7108FSis+rmL5XBrQ94acpPG3Hxy3VrC5JqjEYWsdm7RsbSCNxc4D4Gyy3PeycvuLtNzbhY/8AI81r7N531zXRsAYIpnix4xxPeB6gLOtYL8SLgwCnpJI2tAjMkAccvVM9v/7HD/8ADBUQcoaCLWAFh0CN7cVaMW/bzb/0OH/4YIGv/wCyw8eFMFTJQJUsbeFbUV+Eu/qTKSOMm74hFYP9OPVX8c2pw7HYAazDZ4axliyaCcAtI3a23eK5MnRDNrfirTj0Ki+kgxUkcdXTzzzMFi9oDC/qTff1yrExrbTEsVvFHkooDe7IiS53i75LlyUgbuCtZs09kjmEOa4hw1BG8Kz/AEgM3aOpYXVO/tTe3jl3XVK6B3rLWHyyySyOkle50jjcuJ1TLlBOjyF/1peG/cGqlYF0LouLcxyElvC+9NKkcMltQ6/SyRy/ZuB1KZdWm1pbTuhfFE4OYGtdk1aL/mg4qk7kL2QJTbqQ5iOKBJO8jzQKdHIY3ZgGnS1nC4RWojuU0lFx3JqkF0cxQQQWyCnAqIFEFdGXsv0K4tIcHrMNgkAmiqe2DLA52vaGk+RG5eo10jSzK85gRY8l8ubPYzVYBi9PidGQJYnC7SbCRv2mn96L3nD9oabHaOOvoZM8MnvA72HcWkcCEc8/Oq34Ze1+CwYlTOgqG5mnVjwNWeBXiuJ0cuHVslLUe8w3B4ObwK+k4YY6mMB4u38lx23OxUeIwslgPZ1UZJhk58crra2K61l5VspWwUmMAVE0cUc0EkRc51rXFx8QFDKI2yuEgux5+zx69eC9toMB2cwTYllLNSUlfJUd6aSRgJkm46nUZeHJeUbRbLy0rJKjCmSTUrbvfFq58Q1ub8RYlYi6xx9fTvpu6Qcr9QfBb2z1hT1mUfWMw6qIA33c1rB8XKhiEoqaB+f32yMcDzzNOb4sb6nqr2Bgtpq+W3uUsbfIzxk/5beaKubsY50008k1aFbQOZSCsjZlDJHQVEbd0UgNvQrOvdRIlNKRQKKRTUigpEi33h4IFIFQBJJC6kJumm54J7HtabuZnHK9k8zRcYB+MqSGyBCe9zHHuMyjxJTDvUQshbVFBCLfv0QPgUTl5n1TbNUiTSicvMoHLzKDAtdIhI5Oab3OaCCSJy8CgpNMFObuUd0brbKS99FewfF6/Ba1lZhs5ikB1aRdkg5ObxCzgUgbpT3zYHbei2hc6B7RR17RcwZrtf8AyHiOh1C1dscdpsJweWols+RmXLAD3nl2YNA8S0+hXztQGo9vpvY5XQ1JmYIpGnVji4AH4r0H6SKiqxOsoojI54pQQxjBq+UnV1uJsLeZ5rUoVMG2iqqky1GJVMkjZXWe14AbE7hlsBp0PxXQ0OPz4c1zabsnMc4OcXsvm0Ol+RuV56+mdSNM1Rdk0zWyQwX0k11c+9xpvA4+Wtmjq3wVoaZM1PUWLc5ALb/K3prwTK59cb8UdtaLPUVFVgtM5lJUsb2tPvMTgc3d+7ceVysrYyZse0FNBVyZaSo+qqWuOW7PesTvAu1p05LuKCmNVUCHOGF24u0F7i/76K06j7OofGQ1xY4tzgXB8DZF52nmyfxYeyGFzVuz2LyVjJewrJX5HyDvE5b5vEaHyXFugkjpaadwBjnbdrm7rjePFew4lUewbJ1U+YdpGyaQNcNAcgDfjZed1NK0bI1MoyDscTaY2N+yx7L6dL39EVuXXOFBLgECgkgjwQUgSSQQiQRQKkRQSQKkSBKKCkV0EkEGEkTokgUILppKJQUSumpJIRIIoKTRBRSSWwIR3GySSk1dlGNk2nwtrhcGoGngCf0XWbQVEsWLQyMdZ3bn8wP1SSW59M36cztGTDUYfHGbNbDE/lqcxPx/MrPnlc+Okl3PcwuNuYkt+qSSA72ieXRxPO8gXWrBd2W54JJLQZv0hyvj2YdG092SdjHfy6ut6gLn6u//AIeucTcurYWknkI9Eklzv21HIlAopJJpSO5JJSBBJJCA7kEklIkCikpGlJJJSgIJJIIFBJJCA7kEkkE1JJJSAoJJIL//2Q==" alt="Blog Post">
+            <div class="content">
+                <h3>AI and Robotics: Changing the Future of Work</h3>
+                <p>Understand the growing impact of AI and robotics on automation and employment trends.</p>
                 <a href="#">Read More</a>
             </div>
         </div>
     </div>
 
     <footer>
-        <p>&copy; 2025 My Blog. All rights reserved.</p>
+        <p>&copy; 2025 Generative AI Blog. All rights reserved.</p>
+        <p class="footer-links">
+            <a href="#">Privacy Policy</a>|
+            <a href="#">Terms of Service</a>|
+            <a href="#">Contact Us</a>
+        </p>
         <p>Created by <a href="https://shahuljani.github.io/Shaik_Shahul_Port_Folio_2024" target="_blank">Shaik Shahul</a></p>
     </footer>
+
+    <script>
+        function toggleMobileNav() {
+            const mobileNav = document.getElementById('mobile-nav');
+            mobileNav.style.display = mobileNav.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
 </body>
 </html>
