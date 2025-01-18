@@ -302,8 +302,7 @@
             .hero p {
                 font-size: 0.9rem;
             }
-        }
-        .personal-ad {
+            .personal-ad {
             width: 15rem;
             height: 4.8rem;
             text-align: center;
@@ -330,6 +329,53 @@
             font-size: 1rem;
             font-weight: bold;
             line-height: 30px;
+            text-align: center;
+            transition: background 0.3s;
+        }
+
+        .personal-ad .close-btn:hover {
+            background: #D32F2F; /* Darker red on hover */
+        }
+
+        .personal-ad img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            transition: transform 0.3s;
+        }
+
+        .personal-ad img:hover {
+            transform: scale(1.05);
+        }
+        }
+        .personal-ad {
+            width: 15rem;
+            height: 4.8rem;
+            text-align: center;
+            background-color: #000000; /* Dark Blue */
+            color: #FFFFFF; /* White */
+            padding: 15px;
+            margin: 10px px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: relative; /* For positioning the close button */
+        }
+
+        .personal-ad .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #ff0000; /* Red for the close button */
+            color: #FFFFFF;
+            border: none;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: bold;
+            line-height: 20px;
             text-align: center;
             transition: background 0.3s;
         }
