@@ -59,15 +59,66 @@ nav a:hover {
     color: var(--light-blue);
 }
 
+/* Container for the search bar */
 .search-bar {
-    margin-right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Space between the input and the icon */
+    background-color: #f9f9f9; /* Light background */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 5px 10px;
+    max-width: 300px; /* Limit the search bar's width */
+    width: 100%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: box-shadow 0.3s ease-in-out;
 }
 
+.search-bar:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Slight hover effect */
+}
+
+/* Input inside the search bar */
 .search-bar input {
-    padding: 8px;
-    font-size: 1rem;
+    flex: 1; /* Input takes the remaining space */
     border: none;
-    border-radius: 20px;
+    outline: none;
+    font-size: 16px;
+    background: transparent;
+    padding: 5px;
+}
+
+/* Search icon */
+.search-bar .search-icon {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    animation: pulse 2s infinite ease-in-out; /* Add pulse animation */
+}
+
+/* Hover effect to make it bounce */
+.search-bar .search-icon:hover {
+    animation: bounce 0.6s ease-in-out;
+}
+
+/* Keyframes for pulse animation */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+/* Keyframes for bounce animation */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
 }
 
 .hamburger-menu {
